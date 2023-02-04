@@ -25,7 +25,7 @@
             @foreach($users as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td><img src="{{ $item->images->count() > 0 ? asset('upload/users/' . $item->images->first()->url) : 'upload/users/default.png' }}" width="200px" height="200px" alt="" class="avatar"></td>
+                    <td><img src="{{ $item->images->count() > 0 ? asset('upload/' . $item->images->first()->url) : 'upload/default.png' }}" width="150px" height="150px" alt=""></td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->phone }}</td>

@@ -6,7 +6,7 @@ use Image;
 use Spatie\Permission\Traits\HasRoles;
 trait HandleImageTrait
 {
-    protected string  $path = 'upload/users/';
+    protected string  $path = 'upload/';
     public function verify($request)
     {
         return $request->has('image');

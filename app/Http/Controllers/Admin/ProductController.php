@@ -3,10 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected $category;
+    protected $product;
+    public function __construct(Product $product, Category $category)
+    {
+        $this->product = $product;
+        $this->category = $category;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = $this->product->latest('id')->paginate(5);
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -24,7 +34,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = $this->category->get(['id', 'name']);
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
